@@ -1,6 +1,8 @@
 #include <memory>
 #include <atomic>
+#if WIN32
 #include <Windows.h>
+#endif
 
 namespace gginput
 {
@@ -14,7 +16,9 @@ namespace gginput
 	private:
 		atomic<bool> m_keyboard_enabled;
 		atomic<bool> m_mouse_enabled;
+#if WIN32
 		HHOOK m_keyboard_hook_proc = nullptr;
+#endif
 		static GGInput* m_instance;
 	protected:
 		virtual void handleKeyDown(GGInputKey key);
@@ -31,4 +35,6 @@ namespace gginput
 	};
 }
 
+#if WIN32
 LRESULT CALLBACK winKeyboardHookProc(int code, WPARAM wParam, LPARAM lParam);
+#endif
