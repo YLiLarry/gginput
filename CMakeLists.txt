@@ -34,7 +34,8 @@ install(FILES ${HEADERS} DESTINATION include/${PROJECT_NAME})
 
 target_include_directories(
     ${PROJECT_NAME} 
-    PUBLIC  
+	PUBLIC  
+		./include
         deps/gainput/lib/include
 )
 
